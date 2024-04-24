@@ -32,6 +32,14 @@
 							<i class='bx bxs-lock-alt'></i>
 							<input type="password" placeholder="Confirm password">
 						</div>
+						<div class="input-group">
+							<i class='bx bxs-lock-alt'></i>
+							<input type="question" placeholder="Key question">
+						</div>
+						<div class="input-group">
+							<i class='bx bxs-lock-alt'></i>
+							<input type="answer" placeholder="Key answer">
+						</div>
 					</form>
 						<button>
 							Sign up
@@ -130,9 +138,6 @@ toggle = () => {
 setTimeout(() => {
 	container.classList.add('sign-in')
 }, 200)
-function back() {
-	Location.head("../index.php")
-}
 </script>
 </body>
     
