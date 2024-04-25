@@ -26,23 +26,6 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-.back-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 999;
-}
-
-.back-btn button {
-    background-color: #f1f1f1;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.back-btn button:hover {
-    background-color: #ff9f1a;
-}
 .container {
     position: relative;
     min-height: 100vh;
