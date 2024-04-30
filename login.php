@@ -84,17 +84,17 @@
 						<form action="control_login.php" method="POST">
 							<div class="input-group">
 								<i class="bx bxs-user"></i>
-								<input type="text" placeholder="Username" name="user" />
+								<input type="text" placeholder="Username" name="user" required />
 							</div>
 							<div class="input-group">
 								<i class="bx bxs-lock-alt"></i>
-								<input type="password" placeholder="Password" name="pass" />
+								<input type="password" placeholder="Password" name="pass" required />
 							</div>
+							<button type="submit">Sign in</button>
 						</form>
-						<button>Sign in</button>
-						<p>
+						<a href="forgot_pass.php" style="text-decoration: none; color: black; font-size: 0.7rem;">
 							<b> Forgot password? </b>
-						</p>
+						</a>
 						<p>
 							<span> Don't have an account? </span>
 							<b onclick="toggle()" class="pointer"> Sign up here </b>
