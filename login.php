@@ -21,7 +21,7 @@
 						<form action="control_signup.php" method="POST" onsubmit="return validateForm()">
 							<div class="input-group">
 								<i class="bx bxs-user"></i>
-								<input id="username" type="text" placeholder="Username" name="username" required />
+								<input id="username" type="text" placeholder="Username" name="username" maxlength="12" required />
 							</div>
 							<div class="input-group">
 								<i class="bx bx-mail-send"></i>
