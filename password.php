@@ -1,10 +1,5 @@
 <?php
 session_start();
-$email = $_SESSION["email"];
-$con = mysqli_connect("localhost", "root", "", "exam2");
-$sql = "SELECT * FROM accounts WHERE email = '$email'";
-$result = $con->query($sql);
-$your_pass = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,12 +15,45 @@ $your_pass = $result->fetch_assoc();
 </head>
 
 <body>
-    <h1 class="text-center mt-3">Your password is <?php echo $your_pass["password"] ?></h1>
+    <div class="container">
+        <form action="#" method="post" onsubmit="return validateForm()">
+            <h1>Reset password</h1>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input id="password" type="password" class="form-control" placeholder="Enter password" id="pwd"
+                    name="newpassword" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Corfirm password:</label>
+                <input id="confirm" type="password" class="form-control" placeholder="Confirm password" id="pwd"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary" name="send-password">Submit</button>
+        </form>
+    </div>
     <?php
-    session_unset();
-    session_destroy();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_SESSION["email"];
+        $newpassword = $_POST["newpassword"];
+        $con = mysqli_connect("localhost", "root", "", "exam2");
+        $sql = "UPDATE accounts SET password = '$newpassword' WHERE email = '$email'";
+        $con->query($sql);
+        echo "<script>alert('Reset password successed!')</script>";
+        echo "<script>window.location.href = 'login.php'</script>";
+        session_destroy();
+    }
     ?>
-    <a href="login.php" class="btn btn-primary">Return to Login</a>
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirm = document.getElementById("confirm").value;
+            if (password !== confirm) {
+                alert("Unmatched password!");
+                return false;
+            }
+            return true;
+        };
+    </script>
 </body>
 
 </html>

@@ -4,10 +4,15 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$code = $_POST["code"];
-$email = $_POST["email"];
-$_SESSION["email"] = $email;
-$content = $_POST["content"];
+if (!isset($_SESSION["code"])) {
+    $randomBytes = random_bytes(3);
+    $randomCode = bin2hex($randomBytes);
+    $_SESSION["code"] = $randomCode;
+}
+$content = "" . $_SESSION["code"];
+
+$_SESSION["email"] = $_POST["email"];
+$email = $_SESSION["email"];
 
 $con = mysqli_connect("localhost", "root", "", "exam2");
 $sql = "SELECT * FROM accounts WHERE email = '$email'";
@@ -29,9 +34,9 @@ if ($result->num_rows > 0) {
         $mail->Port = 465;
 
         $mail->setFrom("nngocm777@gmail.com");
-        $mail->addAddress($email);
+        $mail->addAddress($_SESSION["email"]);
         $mail->isHTML(true);
-        $mail->Subject = "Authentication code: $code";
+        $mail->Subject = "Authentication code: " . $_SESSION["code"];
         $mail->Body = "$content";
 
         $mail->send();
@@ -42,11 +47,5 @@ if ($result->num_rows > 0) {
 } else {
     echo "<script>alert('Email does not exits in database!')</script>";
     echo "<script>window.location.href = 'forgot_pass.php'</script>";
-    session_unset();
     session_destroy();
 }
-
-
-
-
-//kmvj qeoi pdta uvry
