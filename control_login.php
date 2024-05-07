@@ -19,8 +19,14 @@ class LoginController {
             $row = $result->fetch_assoc();
             $_SESSION["user"] = $user;
             $_SESSION["type"] = $row["type"];
-            header("location:index.php");
-        } else {
+            if ($_SESSION["type"] === "1") {
+                header("location:admin_index.php");
+            } 
+            else {
+                header("location:user_index.php");
+            }
+        } 
+        else {
             echo "<script>alert('Đăng nhập thất bại!')</script>";
             header("location:login.php?error=1");
         }
