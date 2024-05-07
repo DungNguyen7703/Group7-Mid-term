@@ -27,7 +27,7 @@ class LoginController {
             }
         } 
         else {
-            echo "<script>alert('Đăng nhập thất bại!')</script>";
+            echo "<script> alert('Đăng nhập thất bại!')</script>";
             header("location:login.php?error=1");
         }
     }

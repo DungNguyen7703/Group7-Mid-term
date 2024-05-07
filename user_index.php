@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+  Session_start();
+  include 'connection.php';
+?>
 <head>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="login.css" type="text/css" />
@@ -58,7 +61,11 @@
     }
 </style>
 
-<body>
+<body> 
+<?php
+      $user = $_SESSION["user"];
+      echo "<h1> Welcome user ". $user. "</h1>"
+    ?>    
     <div class="info-container">
     <h2 class="text-center mb-4">Thông Tin Cá Nhân</h2>
     <form>
@@ -99,8 +106,8 @@
             <input type="email" id="email" value="email@example.com">
         </div>
         <div class="button-group">
-            <button type="submit" class="btn-save"><i class="fa fa-save"></i>Lưu</button>
-            <button type="button" class="btn-logout"><i class="fa fa-sign-out"></i>Đăng xuất</button>
+            <button type="submit" class="btn-save" ><i class="fa fa-save"></i>Lưu</button>
+            <button type="button" class="btn-logout"><i class="fa fa-sign-out"></i><a href="logout.php">Đăng xuất</a></button>
         </div>
     </form>
 </body>
