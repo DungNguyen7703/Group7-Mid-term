@@ -61,23 +61,11 @@
     }
 </style>
 
-<<<<<<< HEAD
 <body> 
 <?php
       $user = $_SESSION["user"];
       echo "<h1> Welcome user ". $user. "</h1>"
     ?>    
-=======
-<?php
-    session_start();
-    if (isset($_GET["logout"])) {
-        header("location:login.php");
-        exit();
-    }
-?>
-
-<body>
->>>>>>> 860e60174504e0a5232f4a717f08518c8876fbaf
     <div class="info-container">
     <h3 class="text-center mb-4">Xin chào, <span id="greetingUsername"><?php echo $_SESSION["user"]; ?></span></h3>
     <form>
@@ -110,13 +98,8 @@
             <input type="email" id="email" name="email" value="">
         </div>
         <div class="button-group">
-<<<<<<< HEAD
             <button type="submit" class="btn-save" ><i class="fa fa-save"></i>Lưu</button>
             <button type="button" class="btn-logout"><i class="fa fa-sign-out"></i><a href="logout.php">Đăng xuất</a></button>
-=======
-            <button type="submit" class="btn-save"><i class="fa fa-save"></i>Lưu</button>
-            <button type="submit" name="logout" class="btn-logout"><i class="fa fa-sign-out"></i>Đăng xuất</button>
->>>>>>> 860e60174504e0a5232f4a717f08518c8876fbaf
         </div>
     </form>
 </body>
