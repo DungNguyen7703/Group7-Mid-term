@@ -34,6 +34,10 @@ class LoginController
                 echo "<script>window.location.href = 'login.php?error=1'</script>";
             }
         }
+        else {
+            echo "<script> alert('Tài khoản không tồn tại!')</script>";
+            echo "<script>window.location.href = 'login.php?error=2'</script>";
+        }
     }
 }
 

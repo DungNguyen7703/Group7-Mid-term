@@ -18,7 +18,7 @@ class Connection {
         }
     }
 
-    public function getConnection() {
+    public function getConnection() {   
         return $this->ocon;
     }
 }
