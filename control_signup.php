@@ -10,22 +10,6 @@ class RegisterController {
     public function register($username, $password, $email, $type) {
         $sql = "INSERT INTO accounts(username, password, email, type) VALUES('$username','$password','$email','$type')";
         $result = $this->ocon->query($sql);
-
-        if ($result->num_rows > 0) {
-            echo '<script>
-            // Hiển thị cửa sổ cảnh báo khi trang được tải
-            window.onload = function() {
-                alert("Đăng ký thành công!");
-            };
-            </script>';
-        } else {
-            echo '<script>
-            // Hiển thị cửa sổ cảnh báo khi trang được tải
-            window.onload = function() {
-                alert("Đăng ký không thành công!");
-            };
-            </script>';
-        }
     }
 }
 
