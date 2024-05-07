@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `account_id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
   `type` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
