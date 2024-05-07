@@ -33,12 +33,12 @@ session_start();
     </div>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_SESSION["email"];
+        $user = $_SESSION["user"];
         $newpassword = $_POST["newpassword"];
         $hashed_password = password_hash($newpassword, PASSWORD_DEFAULT);
         $newpassword = $hashed_password;
         $con = mysqli_connect("localhost", "root", "", "exam2");
-        $sql = "UPDATE accounts SET password = '$newpassword' WHERE email = '$email'";
+        $sql = "UPDATE accounts SET password = '$newpassword' WHERE username = '$user'";
         $con->query($sql);
         echo "<script>alert('Reset password successed!')</script>";
         echo "<script>window.location.href = 'login.php'</script>";
