@@ -11,19 +11,23 @@ class LoginController {
     public function login($user, $pass) {
         $user = $this->ocon->real_escape_string($user);
         $pass = $this->ocon->real_escape_string($pass);
-        $sql = "SELECT * FROM accounts WHERE username='$user' AND password ='$pass'";
+        $sql = "SELECT * FROM accounts WHERE username='$user'";
         $result = $this->ocon->query($sql);
 
         if ($result->num_rows > 0) {
             session_start();
             $row = $result->fetch_assoc();
+            $hashed_password = $row['password'];
+            if (password_verify($pass, $hashed_password)) 
+            {
             $_SESSION["user"] = $user;
             $_SESSION["type"] = $row["type"];
             if ($_SESSION["type"] === "1") {
                 header("location:admin_index.php");
-            } 
+                } 
             else {
                 header("location:user_index.php");
+                }
             }
         } 
         else {

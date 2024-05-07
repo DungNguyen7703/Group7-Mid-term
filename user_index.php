@@ -61,33 +61,37 @@
     }
 </style>
 
+<<<<<<< HEAD
 <body> 
 <?php
       $user = $_SESSION["user"];
       echo "<h1> Welcome user ". $user. "</h1>"
     ?>    
+=======
+<?php
+    session_start();
+    if (isset($_GET["logout"])) {
+        header("location:login.php");
+        exit();
+    }
+?>
+
+<body>
+>>>>>>> 860e60174504e0a5232f4a717f08518c8876fbaf
     <div class="info-container">
-    <h2 class="text-center mb-4">Thông Tin Cá Nhân</h2>
+    <h3 class="text-center mb-4">Xin chào, <span id="greetingUsername"><?php echo $_SESSION["user"]; ?></span></h3>
     <form>
         <div class="info-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" value="username_khachhang" readonly>
-        </div>
-        <div class="info-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" value="*********" readonly>
-        </div>
-        <div class="info-group">
             <label for="fullname">Họ tên:</label>
-            <input type="text" id="fullname" value="Nguyễn Văn A">
+            <input type="text" id="fullname" name="fullname" value="">
         </div>
         <div class="info-group">
             <label for="birthdate">Ngày sinh:</label>
-            <input type="date" id="birthdate" value="2006-01-01">
+            <input type="date" id="birthdate" name="birthdate" value="">
         </div>
         <div class="info-group">
             <label for="gender">Giới tính:</label>
-            <select id="gender">
+            <select id="gender" name="gender">
             <option value="male" selected>Nam</option>
             <option value="female">Nữ</option>
             <option value="other">Khác</option>
@@ -95,19 +99,24 @@
         </div>
         <div class="info-group">
             <label for="idcard">Căn cước công dân:</label>
-            <input type="text" id="idcard" value="123456789">
+            <input type="text" id="idcard" name="idcard" value="">
         </div>
         <div class="info-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="tel" id="phone" value="0123456789">
+            <input type="tel" id="phone" name="phone" value="">
         </div>
         <div class="info-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" value="email@example.com">
+            <input type="email" id="email" name="email" value="">
         </div>
         <div class="button-group">
+<<<<<<< HEAD
             <button type="submit" class="btn-save" ><i class="fa fa-save"></i>Lưu</button>
             <button type="button" class="btn-logout"><i class="fa fa-sign-out"></i><a href="logout.php">Đăng xuất</a></button>
+=======
+            <button type="submit" class="btn-save"><i class="fa fa-save"></i>Lưu</button>
+            <button type="submit" name="logout" class="btn-logout"><i class="fa fa-sign-out"></i>Đăng xuất</button>
+>>>>>>> 860e60174504e0a5232f4a717f08518c8876fbaf
         </div>
     </form>
 </body>
