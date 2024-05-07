@@ -37,36 +37,6 @@
 								<p id="thong-bao" style="display:none; font-size: 0.8rem; color: red;">Passwords not
 									matching!</p>
 							</div>
-							<div class="input-group">
-								<p style="font-size: 1rem;">Authentication Questions</p>
-								<p style="font-size: 0.8rem">This will be important
-									when you need to reset your password!</p>
-								<p style="font-size: 0.8rem">Choose, one below!
-									&#128150;</p>
-								<i class="bx bxs-lock-alt"></i>
-								<select id="authen" style="appearance: none;" title="Choose a question!" name="authen">
-									<?php
-									$conn = mysqli_connect("localhost", "root", "", "exam2");
-									if (!$conn) {
-										die("Connection failed: " . mysqli_connect_error());
-									}
-									$sql_questions = "SELECT * FROM questions";
-									$result = $conn->query($sql_questions);
-									if ($result->num_rows > 0) {
-										while ($row = $result->fetch_assoc()) {
-											?>
-											<option value="<?php echo $row["question_id"] ?>"><?php echo $row["question"] ?>
-											</option>
-											<?php
-										}
-									}
-									?>
-								</select>
-							</div>
-							<div class="input-group">
-								<i class="bx bxs-lock-alt"></i>
-								<input id="answer" type="answer" placeholder="Key answer" name="answer" required />
-							</div>
 							<button type="submit">Sign up</button>
 						</form>
 						<p>
