@@ -30,7 +30,7 @@
 							<div class="input-group">
 								<i class="bx bxs-lock-alt"></i>
 								<input id="password" type="password" placeholder="Password" name="password" 
-									title="Minimum 6 characters at least 1 Alphabet and 1 Number"
+					 				title="Minimum 6 characters at least 1 Alphabet and 1 Number"
                 					pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required/>
 							</div>
 							<div class="input-group">

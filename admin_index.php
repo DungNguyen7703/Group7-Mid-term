@@ -1,14 +1,20 @@
+<?php
+  Session_start();
+  include 'connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="login.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<script src="signup.js"></script>
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 
 <style>
         /* CSS cho header */
@@ -52,12 +58,17 @@
         .sidebar-item {
             margin-bottom: 10px;
         }
+        .container {
+          margin-left: 20%;
+          margin-top: 5%;
+        }
 </style>
-
+</head>
 <body>
+
     <div class="header">
         <div class="title">Admin Page</div>
-        <button class="logout-button">Log Out</button>
+        <button class="logout-button"><a href="logout.php">Log Out</a></button>
     </div>
     <div class="sidebar">
         <div class="sidebar-item">Dashboard</div>
@@ -67,4 +78,47 @@
         <div class="sidebar-item">User Management</div>
         <div class="sidebar-item">Settings</div>
     </div>
+    <div class="main">
+
+<div class="container">   
+<?php
+      $user = $_SESSION["user"];
+      echo "<h1> Welcome $user </h1>";
+      $sql="SELECT * FROM accounts ";   
+    $result=$ocon->query($sql);
+    if($result->num_rows>0){
+?>
+  <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        <?php 
+            while($row=$result->fetch_assoc()){
+        ?>
+            <tr>
+                <td><?php  echo $row["username"]; ?></td>
+                <td><?php  echo $row["password"];?></td>
+                <td><?php  echo $row["email"];?></td>
+                <td> <a href="update_acc.php?account_id=<?php  echo $row['account_id']; ?>">Sửa</a>,
+                 <a href="del_acc.php?account_id=<?php  echo $row['account_id']; ?>">Xóa</a> </td>
+            </tr>
+        <?php 
+            }
+        ?>
+        
+        </tbody>
+    </table>
+    </div>
+<?php
+    }
+?>
+</div>
+</div>
 </body>
