@@ -1,6 +1,12 @@
 <?php
   Session_start();
   include 'connection.php';
+
+if (!isset($_SESSION['user'])) {
+    // Nếu chưa đăng nhập, chuyển hướng người dùng đến trang đăng nhập
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
