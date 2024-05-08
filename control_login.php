@@ -12,8 +12,6 @@ class LoginController
 
     public function login($user, $pass)
     {
-        $user = $this->ocon->real_escape_string($user);
-        $pass = $this->ocon->real_escape_string($pass);
         $sql = "SELECT * FROM accounts WHERE username='$user'";
         $result = $this->ocon->query($sql);
 

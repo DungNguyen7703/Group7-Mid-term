@@ -1,17 +1,16 @@
 <?php
-    try {
+        session_start();
+        try{
         if ($_SESSION["type"] !== "1") {
             echo "<script> alert('Bạn không có quyền truy cập trang này!')</script>";
             echo "<script>window.location.href = 'login.php'</script>";
         } else {
-            Session_start();
             include 'connection.php';
         }
     } catch (Exception $e) {
-        echo "<script> alert('Bạn không có quyền truy cập trang này!')</script>";
+        echo "<script> alert('Bạn chưa đăng nhập!')</script>";
         echo "<script>window.location.href = 'login.php'</script>";
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
