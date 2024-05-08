@@ -75,10 +75,9 @@ include 'connection.php';
 <body>
     <?php
     $user = $_SESSION["user"];
-    echo "<h1> Welcome user " . $user . "</h1>"
+    echo "<h1> Xin chào " . $user . "</h1>"
         ?>
     <div class="info-container">
-        <h3 class="text-center mb-4">Xin chào, <span id="greetingUsername"><?php echo $_SESSION["user"]; ?></span></h3>
         <form>
             <div class="info-group">
                 <label for="fullname">Họ tên:</label>

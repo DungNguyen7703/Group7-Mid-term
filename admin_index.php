@@ -1,6 +1,17 @@
 <?php
-  Session_start();
-  include 'connection.php';
+    try {
+        if ($_SESSION["type"] !== "1") {
+            echo "<script> alert('Bạn không có quyền truy cập trang này!')</script>";
+            echo "<script>window.location.href = 'login.php'</script>";
+        } else {
+            Session_start();
+            include 'connection.php';
+        }
+    } catch (Exception $e) {
+        echo "<script> alert('Bạn không có quyền truy cập trang này!')</script>";
+        echo "<script>window.location.href = 'login.php'</script>";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +62,7 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
-            top: 50px;
+            top: 60 px;
             left: 0;
         }
 
